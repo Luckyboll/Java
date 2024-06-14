@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="Dao.impl,Service.impl,Aspect"/>
+<!--    <context:component-scan base-package="Service.impl"/>-->
+<!--    <context:component-scan base-package="Aspect"/>-->
+    <aop:aspectj-autoproxy/>
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${driver}"></property>
+        <property name="url" value="${url}"></property>
+        <property name="username" value="${root}"></property>
+        <property name="password" value="${password}"></property>
+    </bean>
+    <bean id="JdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!--    <bean id="basicTeam" class="Entity.Team">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="lakes"/>-->
+<!--        <property name="num" value="2"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="match" class="Entity.Match">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="NBA"/>-->
+<!--        <property name="num" value="1"/>-->
+<!--        <property name="teams" ref="basicTeam"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="player1" class="Entity.Player">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="mike"/>-->
+<!--        <property name="age" value="18"/>-->
+<!--        <property name="team" ref="basicTeam"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="player2" class="Entity.Player">-->
+<!--        <property name="id" value="2"/>-->
+<!--        <property name="name" value="james"/>-->
+<!--        <property name="age" value="18"/>-->
+<!--        <property name="team" ref="basicTeam"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="team" class="Entity.Team">-->
+<!--        <property name="id" value="1"/>-->
+<!--        <property name="name" value="lakes"/>-->
+<!--        <property name="num" value="2"/>-->
+<!--        <property name="players">-->
+<!--            <list>-->
+<!--                <ref bean="player1"/>-->
+<!--                <ref bean="player2"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="match" ref="match"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="PlayerDaoImpl" class="Dao.impl.PlayerDaoImpl"/>-->
+<!--    <bean id="TeamDaoImpl" class="Dao.impl.TeamDaoImpl"/>-->
+<!--    <bean id="MatchDaoImpl" class="Dao.impl.MatchDaoImpl"/>-->
+<!--    <bean id="PlayerServiceImpl" class="Service.impl.PlayerServiceImpl">-->
+<!--        <property name="playerDao" ref="PlayerDaoImpl"/>-->
+<!--    </bean>-->
+<!--    <bean id="TeamServiceImpl" class="Service.impl.TeamServiceImpl">-->
+<!--        <property name="teamDao" ref="TeamDaoImpl"/>-->
+<!--    </bean>-->
+<!--    <bean id="MatchServiceImpl" class="Service.impl.MatchServiceImpl">-->
+<!--        <property name="matchDao" ref="MatchDaoImpl"/>-->
+<!--    </bean>-->
+
+</beans>
